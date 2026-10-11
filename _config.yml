@@ -2,9 +2,9 @@ remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 plugins:
   - jekyll-include-cache
 
-title: "你的名字 | TPM Portfolio"
-description: "具身智能方向 TPM 候选人 | 四足机器人全栈项目"
-url: "https://你的用户名.github.io"
+title: "李辰麾 | developer"
+description: "个人开发者"
+url: "https://bit-flamemouse.github.io"
 
 author:
   name: "你的名字"
