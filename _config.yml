@@ -7,5 +7,12 @@ description: "个人开发者"
 url: "https://bit-flamemouse.github.io"
 
 author:
-  name: "你的名字"
-  bio: "TPM candidate focused on embodied AI and robotics"
+  name: "李辰麾"
+
+
+main:
+- title:"项目摘要"
+  url:/
+
+- title:
+  url: https://github.com/Bit-FlameMouse/quadruped-robot"
