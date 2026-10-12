@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="头像占位图">
+  <!-- 这是头像占位图。换成自己的照片：把图片放到 assets/img/avatar.png，并在 content.js 里设置 site.avatar -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="56" fill="url(#bg)" />
+  <circle cx="120" cy="96" r="38" fill="#ffffff" fill-opacity="0.92" />
+  <path d="M48 210c0-40 32-64 72-64s72 24 72 64z" fill="#ffffff" fill-opacity="0.92" />
+</svg>

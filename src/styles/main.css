@@ -1,0 +1,49 @@
+/**
+ * 样式入口。
+ *
+ * 只用原生 @import 组织，浏览器按顺序加载，无需构建步骤。
+ * 引入顺序即层叠顺序：先变量、再重置与排版、然后布局、组件、动效、页面、打印，
+ * 响应式断点放在最后，保证能覆盖前面所有同优先级规则。
+ */
+
+/* 设计变量：颜色、字体、间距、圆角、阴影、层级 */
+@import url('./01-tokens.css');
+
+/* 基础层：重置与排版规范 */
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+@import url('./base/utilities.css');
+
+/* 布局层：页面骨架 */
+@import url('./layouts/container.css');
+@import url('./layouts/header.css');
+@import url('./layouts/footer.css');
+@import url('./layouts/back-to-top.css');
+@import url('./layouts/hero.css');
+@import url('./layouts/section.css');
+@import url('./layouts/detail.css');
+@import url('./layouts/docs-layout.css');
+@import url('./layouts/notfound.css');
+
+/* 组件层：可复用 UI 片段 */
+@import url('./components/button.css');
+@import url('./components/card.css');
+@import url('./components/tag.css');
+@import url('./components/hero.css');
+@import url('./components/skill.css');
+@import url('./components/data-display.css');
+@import url('./components/docs.css');
+@import url('./components/feedback.css');
+@import url('./components/embed.css');
+@import url('./components/markdown.css');
+
+/* 动效层 */
+@import url('./effects/reveal.css');
+@import url('./effects/keyframes.css');
+
+/* 页面层 */
+@import url('./views/resume.css');
+
+/* 响应式与打印（最后加载，优先级最高） */
+@import url('./base/responsive.css');
+@import url('./print.css');

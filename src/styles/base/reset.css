@@ -1,0 +1,5 @@
+/* 重置：抹平浏览器默认样式差异，建立统一的盒模型与背景层。 */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+* { margin: 0; }

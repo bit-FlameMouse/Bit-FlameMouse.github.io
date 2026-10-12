@@ -1,0 +1,13 @@
+/* 页面容器与主内容区。 */
+
+/* ------------------------------------------------------------------ 容器 */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+#app { position: relative; z-index: 1; }
+
+main { display: block; min-height: 60vh; }

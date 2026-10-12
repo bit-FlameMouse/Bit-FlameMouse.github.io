@@ -1,0 +1,29 @@
+{
+  "name": "bit-flamemouse-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "李辰麾的个人网站：项目作品、技术笔记与简历。原生 HTML / CSS / JavaScript，零运行时依赖。",
+  "homepage": "https://bit-flamemouse.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bit-FlameMouse/Bit-FlameMouse.github.io.git"
+  },
+  "author": "李辰麾 <bit.flamemouse@example.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "verify": "node scripts/verify.mjs",
+    "test": "node scripts/verify.mjs"
+  },
+  "keywords": [
+    "portfolio",
+    "static-site",
+    "vanilla-js",
+    "github-pages"
+  ]
+}

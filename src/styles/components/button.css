@@ -1,0 +1,38 @@
+/* 按钮：主按钮与幽灵按钮。 */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease), box-shadow var(--duration) var(--ease),
+    background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+}
+.button:hover { transform: translateY(-2px); }
+.button:active { transform: translateY(0); }
+
+.button-primary {
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent2) 70%, var(--accent)));
+  color: var(--accent-contrast);
+  box-shadow: var(--shadow-glow);
+}
+.button-primary:hover { color: var(--accent-contrast); box-shadow: var(--shadow-lg); }
+
+.button-ghost {
+  background: var(--bg-elev);
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: var(--shadow-xs);
+}
+.button-ghost:hover { color: var(--accent); border-color: var(--accent-border); background: var(--accent-softer); }
+
+.button-sm { padding: 8px 14px; font-size: var(--text-xs); }
+.button-sm .icon { width: 14px; height: 14px; }

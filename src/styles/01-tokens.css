@@ -1,0 +1,117 @@
+/* =============================================================================
+ * 01-tokens.css — 设计变量（颜色 / 间距 / 字体 / 阴影 / 圆角）
+ * 想换肤只需要改这里的变量，或者在 content.js 里改 site.accent。
+ * ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------- 品牌色 */
+  --accent: #6366f1;
+  --accent2: #06b6d4;
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 6%, transparent);
+  --accent-border: color-mix(in srgb, var(--accent) 32%, transparent);
+  --accent-contrast: #ffffff;
+
+  /* ---------------------------------------------------------- 中性色 */
+  --bg: #f7f8fc;
+  --bg-soft: #eef1f8;
+  --bg-elev: #ffffff;
+  --bg-inset: #f3f5fa;
+  --text: #101828;
+  --text-soft: #475467;
+  --muted: #667085;
+  --border: rgba(16, 24, 40, 0.1);
+  --border-strong: rgba(16, 24, 40, 0.18);
+  --shadow-color: 220 40% 30%;
+
+  --success: #12b76a;
+  --warning: #f79009;
+  --danger: #f04438;
+
+  /* ---------------------------------------------------------- 布局 */
+  --container: 1120px;
+  --container-narrow: 780px;
+  --gutter: 24px;
+  --header-height: 68px;
+
+  /* ---------------------------------------------------------- 间距 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 88px;
+
+  /* ---------------------------------------------------------- 圆角 */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------- 字体 */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --text-xs: 0.78rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.075rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.6rem;
+  --text-3xl: 2.1rem;
+  --text-4xl: 2.7rem;
+  --text-5xl: 3.6rem;
+  --leading: 1.75;
+  --leading-tight: 1.2;
+
+  /* ---------------------------------------------------------- 阴影 */
+  --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.06);
+  --shadow-sm: 0 2px 6px hsl(var(--shadow-color) / 0.07), 0 1px 2px hsl(var(--shadow-color) / 0.05);
+  --shadow: 0 8px 24px -10px hsl(var(--shadow-color) / 0.18), 0 2px 6px hsl(var(--shadow-color) / 0.06);
+  --shadow-lg: 0 24px 48px -20px hsl(var(--shadow-color) / 0.26), 0 4px 12px hsl(var(--shadow-color) / 0.08);
+  --shadow-glow: 0 18px 40px -18px color-mix(in srgb, var(--accent) 55%, transparent);
+
+  /* ---------------------------------------------------------- 动效 */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 140ms;
+  --duration: 240ms;
+  --duration-slow: 520ms;
+
+  /* ---------------------------------------------------------- 层级 */
+  /* 入场动画错峰延迟，由 reveal.js 写入元素行内样式 */
+  --reveal-delay: 0ms;
+
+  --z-header: 60;
+  --z-overlay: 70;
+  --z-top: 80;
+
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------- 深色主题 */
+[data-theme="dark"] {
+  --bg: #0a0c13;
+  --bg-soft: #0d1018;
+  --bg-elev: #12151f;
+  --bg-inset: #161a26;
+  --text: #eef1f8;
+  --text-soft: #b9c0d0;
+  --muted: #8b93a7;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --shadow-color: 230 60% 3%;
+  --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
+  --accent-softer: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-border: color-mix(in srgb, var(--accent) 42%, transparent);
+  --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.5);
+  --shadow-sm: 0 2px 8px hsl(var(--shadow-color) / 0.5);
+  --shadow: 0 10px 28px -12px hsl(var(--shadow-color) / 0.75);
+  --shadow-lg: 0 28px 56px -24px hsl(var(--shadow-color) / 0.85);
+  color-scheme: dark;
+}

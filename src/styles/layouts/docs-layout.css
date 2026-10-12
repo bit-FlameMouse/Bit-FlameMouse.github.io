@@ -1,0 +1,68 @@
+/* 文档库两栏布局。 */
+
+.page-head {
+  padding-block: clamp(40px, 6vw, 68px) var(--space-5);
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-soft) 50%, transparent);
+}
+.page-title {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  font-weight: 750;
+  margin-bottom: 10px;
+}
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding-block: var(--space-6) var(--space-8);
+  align-items: start;
+}
+
+.docs-sidebar { position: sticky; top: calc(var(--header-height) + 20px); }
+.side-nav ul { display: flex; flex-direction: column; gap: 4px; margin-top: var(--space-4); }
+.side-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid transparent;
+  color: var(--text-soft);
+  transition: all var(--duration-fast) var(--ease);
+}
+.side-item:hover { background: var(--accent-softer); color: var(--text); }
+.side-item.is-active {
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+  color: var(--text);
+}
+.side-category { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.side-title { font-size: var(--text-sm); font-weight: 550; }
+.side-updated { font-size: var(--text-xs); color: var(--muted); }
+
+.docs-main { min-width: 0; }
+
+/* 404 */
+.notfound {
+  padding-block: clamp(64px, 12vw, 140px);
+  text-align: center;
+  max-width: 620px;
+}
+.notfound-code {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.04em;
+}
+.notfound-title { font-size: var(--text-2xl); margin-top: var(--space-4); }
+.notfound-desc { color: var(--text-soft); margin-top: 12px; }
+.notfound-actions { display: flex; justify-content: center; gap: 12px; margin-top: var(--space-6); flex-wrap: wrap; }
+.center-actions { display: flex; justify-content: center; margin-top: var(--space-5); }

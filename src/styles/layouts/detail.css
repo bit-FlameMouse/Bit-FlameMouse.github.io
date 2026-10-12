@@ -1,0 +1,33 @@
+/* 详情页骨架（项目详情 / 单篇文档共用）。 */
+
+.detail { padding-block: var(--space-6) var(--space-8); max-width: var(--container-narrow); }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: var(--space-5);
+}
+.back-link:hover { color: var(--accent); }
+
+.detail-head { margin-bottom: var(--space-5); }
+.detail-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  font-weight: 750;
+}
+.detail-lead { color: var(--text-soft); margin-top: 10px; font-size: var(--text-lg); }
+.detail-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+.detail-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--space-6); }

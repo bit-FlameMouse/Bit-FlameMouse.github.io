@@ -1,0 +1,56 @@
+/* =============================================================================
+ * 07-print.css — 打印样式（简历可以直接 Ctrl+P 存成 PDF）
+ * ========================================================================== */
+
+@media print {
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #ffffff;
+    --bg-soft: #ffffff;
+    --bg-inset: #ffffff;
+    --text: #111111;
+    --text-soft: #333333;
+    --muted: #555555;
+    --border: #dddddd;
+    --accent: #2b2b2b;
+    --shadow: none;
+  }
+
+  @page { margin: 16mm 14mm; }
+
+  body { background: #fff !important; font-size: 11pt; }
+  body::before { display: none !important; }
+
+  .site-header, .site-footer, .progress-track, .to-top, .skip-link,
+  .resume-toolbar, .back-link, .next-nav, .toc, .search-box { display: none !important; }
+
+  main { min-height: 0; }
+
+  .resume-page { padding: 0; }
+  .resume-sheet {
+    max-width: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .resume-head { border-bottom: 2px solid var(--accent); }
+  .resume-block { margin-top: 14pt; page-break-inside: avoid; }
+  .resume-block-title { font-size: 12pt; }
+  .resume-item, .timeline-card { page-break-inside: avoid; }
+  .resume-contact span, .resume-period, .resume-tech { color: #333; }
+
+  a { color: var(--text); text-decoration: none; }
+
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+
+  /* 详情页/文档页打印时保留正文宽度 */
+  .detail, .docs-main { max-width: none; }
+  .docs-layout { display: block; }
+  .docs-sidebar { display: none; }
+  .md-body .md-code { border: 1px solid #ddd; background: #fafafa; }
+  .md-body .md-copy { display: none; }
+  .md-body .md-anchor { display: none; }
+}

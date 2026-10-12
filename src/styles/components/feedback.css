@@ -1,0 +1,35 @@
+/* 加载中与空状态。 */
+
+.loading { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: var(--space-8) 0; color: var(--muted); }
+.spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-strong);
+  background: var(--bg-inset);
+}
+.empty-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.empty-state h3 { font-size: var(--text-lg); }
+.empty-state p { color: var(--text-soft); font-size: var(--text-sm); max-width: 52ch; }
+.empty-hint code { white-space: pre-wrap; }

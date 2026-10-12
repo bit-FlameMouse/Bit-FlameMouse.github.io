@@ -1,0 +1,30 @@
+* ------------------------------------------------------------------ 头像 */
+.avatar {
+  position: relative;
+  width: min(260px, 62vw);
+  aspect-ratio: 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 88%, #000 6%), var(--accent2));
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  place-items: center;
+}
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-initials {
+  font-size: clamp(3rem, 9vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  display: none;
+}
+.avatar-fallback .avatar-initials { display: block; }

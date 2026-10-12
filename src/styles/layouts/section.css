@@ -1,0 +1,35 @@
+/* 内容区块与区块标题。 */
+
+.section { position: relative; padding-block: clamp(48px, 7vw, 84px); }
+.section-compact { padding-block: 0 var(--space-6); }
+.section-alt {
+  background: color-mix(in srgb, var(--bg-soft) 60%, transparent);
+  border-block: 1px solid var(--border);
+}
+
+.section-head { max-width: 56rem; margin-bottom: var(--space-6); }
+.section-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  max-width: none;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.section-desc { color: var(--text-soft); margin-top: 10px; max-width: 62ch; }

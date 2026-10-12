@@ -1,0 +1,104 @@
+/* 简历页。 */
+
+body.is-detail .nav { display: none; }
+body.is-detail .header-actions { margin-left: auto; }
+
+.detail .md-body { font-size: var(--text-base); }
+
+/* 项目详情页的标签列表与正文之间留白 */
+.project-summary-panel .tag-list { margin-top: 4px; }
+
+/* -------------------------------------------------------- 简历页 */
+.resume-page { padding-block: var(--space-6) var(--space-8); }
+
+.resume-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+.resume-toolbar .back-link { margin-bottom: 0; }
+.resume-toolbar-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.resume-sheet {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.resume-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 2px solid var(--accent);
+  flex-wrap: wrap;
+}
+.resume-identity { min-width: 0; }
+.resume-name { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 750; letter-spacing: -0.03em; line-height: 1.1; }
+.resume-role { color: var(--accent); font-weight: 600; margin-top: 6px; }
+.resume-tagline { color: var(--text-soft); font-size: var(--text-sm); margin-top: 8px; max-width: 46ch; }
+.resume-contact { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; text-align: right; }
+.resume-contact span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+
+.resume-block { margin-top: var(--space-6); }
+.resume-block-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding-bottom: 8px;
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.resume-block-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 48px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.resume-paragraph { color: var(--text-soft); font-size: var(--text-sm); }
+.resume-block > .resume-paragraph + .resume-paragraph { margin-top: var(--space-3); }
+.resume-skill-row { color: var(--text-soft); font-size: var(--text-sm); }
+.resume-skill-row + .resume-skill-row { margin-top: 6px; }
+.resume-skill-row strong { color: var(--text); }
+
+.resume-item + .resume-item { margin-top: var(--space-5); }
+.resume-item-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.resume-item-head h3 { font-size: var(--text-base); font-weight: 650; }
+.resume-period { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); white-space: nowrap; }
+.resume-tech { margin-top: 8px; font-size: var(--text-xs); color: var(--muted); font-family: var(--font-mono); }
+.resume-tech a { color: var(--accent); }
+.resume-foot {
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}

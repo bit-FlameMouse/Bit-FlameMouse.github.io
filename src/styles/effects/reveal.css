@@ -1,0 +1,22 @@
+/* 滚动入场动画（[data-reveal]）。 */
+
+/* =============================================================================
+ * 05-animations.css — 入场动画与关键帧
+ * ========================================================================== */
+
+/* 滚动入场：默认可见，JS 加上 [data-reveal] 后才会隐藏再播放动画。
+   这样在禁用 JavaScript 的情况下内容依然完整可见。 */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* 尊重系统的"减少动态效果"设置 */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .skill-fill { transition: none; width: var(--level, 0%); }
+}

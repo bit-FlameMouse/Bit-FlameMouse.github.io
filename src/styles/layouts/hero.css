@@ -1,0 +1,14 @@
+/* 首屏布局。 */
+
+.hero { padding: clamp(48px, 8vw, 96px) 0 clamp(32px, 5vw, 56px); }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.hero-copy { max-width: 42rem; }
+
+.hero-aside { display: flex; justify-content: center; }

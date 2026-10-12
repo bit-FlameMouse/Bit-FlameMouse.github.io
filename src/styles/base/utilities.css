@@ -1,0 +1,40 @@
+/* 全局细节：跳转链接、滚动条、减少动态效果。 */
+
+/* 跳到主内容（键盘可访问性，视觉上默认隐藏） */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -130%);
+  z-index: var(--z-top);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: 10px 18px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: transform var(--duration) var(--ease);
+}
+.skip-link:focus { transform: translate(-50%, 0); color: var(--accent-contrast); }
+
+/* 通用滚动条 */
+@media (pointer: fine) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--muted) 40%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--accent) 60%, transparent); background-clip: content-box; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

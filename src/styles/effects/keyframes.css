@@ -1,0 +1,37 @@
+/* 关键帧与首屏依次浮现。 */
+
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  70% { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* 首页首屏元素进入时的依次浮现 */
+.hero-copy > *, .hero-aside {
+  animation: fade-in-up var(--duration-slow) var(--ease-out) backwards;
+}
+.hero-aside { animation-delay: 120ms; }
+.hero-copy > *:nth-child(1) { animation-delay: 0ms; }
+.hero-copy > *:nth-child(2) { animation-delay: 60ms; }
+.hero-copy > *:nth-child(3) { animation-delay: 120ms; }
+.hero-copy > *:nth-child(4) { animation-delay: 180ms; }
+.hero-copy > *:nth-child(5) { animation-delay: 240ms; }
+.hero-copy > *:nth-child(6) { animation-delay: 300ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > *, .hero-aside { animation: none; }
+}

@@ -1,0 +1,123 @@
+/* 笔记的来源标记与外部原文嵌入。 */
+
+/* 卡片标题右上角的"原文"标记 */
+.note-source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  vertical-align: 3px;
+  white-space: nowrap;
+}
+
+.doc-card.is-external .doc-title,
+.side-item.is-external .side-title {
+  color: var(--text);
+}
+
+/* 站内正文 + 外部原文时，详情页头部的入口按钮与文字拉开距离 */
+.detail-head .detail-actions { margin-top: var(--space-4); margin-bottom: 0; }
+
+/* 预览嵌入容器 */
+.note-embed {
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-strong);
+  background: var(--bg-inset);
+  overflow: hidden;
+}
+
+.note-embed-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+}
+
+.note-embed-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.note-embed-title {
+  font-size: var(--text-lg);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.note-embed-desc {
+  max-width: 52ch;
+  color: var(--text-soft);
+  font-size: var(--text-sm);
+}
+
+.note-embed-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* 点击加载之后的 iframe 区域 */
+.note-embed.is-embedding {
+  border-style: solid;
+  background: var(--bg-elev);
+}
+
+.note-embed-frame {
+  position: relative;
+  background: var(--bg-elev);
+}
+
+.note-embed-frame iframe {
+  display: block;
+  width: 100%;
+  /* 固定高度而不是自适应：外部文档组件普遍需要确定高度才能正常按需加载 */
+  height: clamp(480px, 72vh, 760px);
+  border: 0;
+}
+
+.note-embed-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: var(--bg-elev);
+  color: var(--muted);
+}
+
+.note-embed-hint {
+  padding: 10px var(--space-4);
+  border-top: 1px solid var(--border);
+  background: var(--bg-inset);
+  color: var(--muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .note-embed-inner { padding: var(--space-5) var(--space-4); }
+  .note-embed-actions .button { flex: 1; }
+  .note-embed-frame iframe { height: 60vh; }
+}

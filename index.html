@@ -1,17 +1,115 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>李辰麾 | developer</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-    <!-- 页头 -->
-    <header id="hero">
-        <h1>李辰麾</h1>
-        <p class="tagline">个人开发者</p>
-    </header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="color-scheme" content="light dark">
 
+  <title>李辰麾 · 开发者主页</title>
+  <meta name="description" content="李辰麾（Bit-FlameMouse）的个人网站：项目作品、技术笔记与简历。">
+  <meta name="keywords" content="李辰麾,Bit-FlameMouse,个人网站,开发者,项目作品集,简历">
+  <meta name="author" content="李辰麾">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="李辰麾 · 开发者主页">
+  <meta property="og:description" content="李辰麾（Bit-FlameMouse）的个人网站：项目作品、技术笔记与简历。">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='54' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3E%E6%9D%8E%3C/text%3E%3C/svg%3E">
+
+  <!-- 让页内的相对路径始终相对站点根目录解析，兼容 GitHub Pages 子路径部署 -->
+  <base href="./">
+
+  <link rel="stylesheet" href="./src/styles/main.css">
+
+  <!--
+    首屏防闪烁：在样式生效前就把主题定下来。
+    与 src/core/theme.js 使用同一个 localStorage 键（bfm-theme），
+    这段脚本必须保持内联，否则会先渲染成浅色再闪一次。
+  -->
+  <script>
+    (function () {
+      try {
+        var stored = window.localStorage.getItem('bfm-theme');
+        var mode = stored === 'dark' || stored === 'light'
+          ? stored
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', mode);
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body data-view="home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!--
+    页头结构直接写在 HTML 里：首屏即可见、无脚本也能导航。
+    src/core/shell.js 只负责注入依赖图标库的部分（社交按钮、主题开关、菜单按钮）。
+  -->
+  <div id="shell-header">
+    <div class="progress-track" aria-hidden="true"><span class="progress-bar" data-progress></span></div>
+    <header class="site-header" data-header>
+      <div class="container header-inner" data-header-content>
+        <a class="brand" href="#/" data-nav-home aria-label="回到首页">
+          <span class="brand-mark" aria-hidden="true">李</span>
+          <span class="brand-text">
+            <strong>李辰麾</strong>
+            <small>Bit-FlameMouse</small>
+          </span>
+        </a>
+
+        <nav class="nav" id="site-nav" aria-label="主导航">
+          <ul class="nav-list">
+            <li><a class="nav-link" data-anchor="about" data-nav="about" href="#about">关于</a></li>
+            <li><a class="nav-link" data-anchor="skills" data-nav="skills" href="#skills">技能</a></li>
+            <li><a class="nav-link" data-anchor="projects" data-nav="projects" href="#projects">项目</a></li>
+            <li><a class="nav-link" data-anchor="experience" data-nav="experience" href="#experience">经历</a></li>
+            <li><a class="nav-link" data-anchor="docs" data-nav="docs" href="#docs">文档</a></li>
+            <li><a class="nav-link" data-anchor="contact" data-nav="contact" href="#contact">联系</a></li>
+            <li><a class="nav-link nav-link-page" data-nav-match="docs,doc" href="#/docs">文档库</a></li>
+            <li><a class="nav-link nav-link-page" data-nav-match="resume" href="#/resume">简历</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions" data-header-actions></div>
+      </div>
+    </header>
+  </div>
+
+  <main id="main">
+    <div id="app">
+      <!-- 视图由 src/views/* 在路由变化时渲染；这里是首屏占位 -->
+      <div class="container loading" role="status">
+        <span class="spinner" aria-hidden="true"></span>
+        <p>正在加载页面内容…</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="shell-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">李</span>
+        <div>
+          <strong>李辰麾</strong>
+          <p>用 HTML / CSS / JavaScript 手写，托管于 GitHub Pages。</p>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a class="footer-link" href="#/docs"><span>文档库</span></a>
+        <a class="footer-link" href="#/resume"><span>简历</span></a>
+        <a class="footer-link" href="#about"><span>关于</span></a>
+        <a class="footer-link" href="#projects"><span>项目</span></a>
+      </nav>
+      <div class="footer-social" data-footer-social></div>
+      <p class="footer-copy" data-footer-copy></p>
+    </div>
+  </footer>
+
+  <!-- 应用唯一入口（原生 ES Module，浏览器直接执行，无需打包） -->
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

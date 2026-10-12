@@ -1,0 +1,128 @@
+/* 顶部导航：品牌、菜单、主题按钮、阅读进度条。 */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+
+body.is-scrolled .site-header {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-xs);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-height);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.brand:hover { color: var(--text); }
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-size: var(--text-sm); font-weight: 650; letter-spacing: 0.01em; }
+.brand-text small { font-size: 0.7rem; color: var(--muted); font-family: var(--font-mono); }
+
+.nav { margin-left: auto; }
+.nav-list { display: flex; align-items: center; gap: 2px; }
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: color var(--duration-fast) var(--ease), background var(--duration-fast) var(--ease);
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--text); background: var(--accent-softer); }
+.nav-link.is-active { color: var(--accent); background: var(--accent-soft); }
+.nav-link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+}
+
+.header-actions { display: flex; align-items: center; gap: 6px; margin-left: 4px; }
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--text-soft);
+  border: 1px solid transparent;
+  transition: all var(--duration-fast) var(--ease);
+}
+.icon-button:hover {
+  color: var(--accent);
+  background: var(--accent-softer);
+  border-color: var(--accent-border);
+}
+
+.theme-toggle .theme-icon { display: none; }
+.theme-toggle .theme-icon-sun { display: grid; }
+[data-theme="dark"] .theme-toggle .theme-icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .theme-icon-moon { display: grid; }
+
+.nav-toggle { display: none; }
+.nav-toggle-close { display: none; }
+body.nav-open .nav-toggle-open { display: none; }
+body.nav-open .nav-toggle-close { display: grid; }
+
+/* 阅读进度条 */
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: calc(var(--z-header) + 1);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+.progress-bar {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
