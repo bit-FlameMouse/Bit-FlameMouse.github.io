@@ -81,10 +81,11 @@ export const CONTENT = Object.freeze({
     ],
   },
 
+  // unit 可选：会以略小的字号紧跟在数值后面，例如 2 年
   stats: [
     { value: '6+', label: '项目作品' },
     { value: '8+', label: '技术栈' },
-    { value: '2', label: '年编码经历' },
+    { value: '2', unit: '年', label: '编码经历' },
     { value: '100%', label: '文档覆盖率' },
   ],
 

@@ -136,7 +136,10 @@ function heroSection() {
 function statsSection() {
   if (!CONTENT.stats.length) return '';
   return (
+    // 注意：这里必须和其他区块一样包一层 .container，
+    // 否则卡片会贴着视口边缘，宽度与下方各区块对不齐。
     '<section class="section section-compact" id="stats" data-section aria-label="数据概览">' +
+    '<div class="container">' +
     '<ul class="stat-grid">' +
     CONTENT.stats
       .map(
@@ -145,12 +148,14 @@ function statsSection() {
           index * 70 +
           '"><strong class="stat-value">' +
           escapeHtml(stat.value) +
+          // 单位单独成一级，字号比数值小一点，读起来更自然
+          (stat.unit ? '<span class="stat-unit">' + escapeHtml(stat.unit) + '</span>' : '') +
           '</strong><span class="stat-label">' +
           escapeHtml(stat.label) +
           '</span></li>',
       )
       .join('') +
-    '</ul></section>'
+    '</ul></div></section>'
   );
 }
 

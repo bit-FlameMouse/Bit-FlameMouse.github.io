@@ -23,6 +23,12 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.stat-unit {
+  margin-left: 0.15em;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0;
+}
 .stat-label { font-size: var(--text-sm); color: var(--muted); }
 
 .about-grid {
