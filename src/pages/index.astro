@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LinkRow from '../components/LinkRow.astro';
-import { categories, counts, entries, featured, groups } from '../data/library';
+import { categories, counts, entries, featured, groups, latestDate } from '../data/library';
 
 const latest = featured.slice(0, 3);
 ---
@@ -36,12 +36,12 @@ const latest = featured.slice(0, 3);
         <dd>技术项目管理（TPM）</dd>
       </div>
       <div>
-        <dt>索引</dt>
+        <dt>收录</dt>
         <dd>{entries.length} 篇 / {categories.length} 类</dd>
       </div>
       <div>
-        <dt>邮箱</dt>
-        <dd><a href="mailto:lichwork0@gmail.com">lichwork0@gmail.com</a></dd>
+        <dt>最近更新</dt>
+        <dd>{latestDate}</dd>
       </div>
     </dl>
   </section>
@@ -105,10 +105,25 @@ const latest = featured.slice(0, 3);
                   <span class="cat-num">{String(index + 1).padStart(2, '0')}</span>
                   <span>{group.en}</span>
                 </span>
-                <h3>{group.name}</h3>
-                <p>{group.desc}</p>
-                <span class="cat-foot">
+
+                <span class="cat-head-row">
+                  <h3>{group.name}</h3>
                   <span class="cat-count">{counts[group.id]} 篇</span>
+                </span>
+
+                <p>{group.desc}</p>
+
+                <span class="cat-list">
+                  {group.items.slice(0, 2).map((item) => (
+                    <span class="cat-item">
+                      <time>{item.date.slice(5)}</time>
+                      <span>{item.title}</span>
+                    </span>
+                  ))}
+                </span>
+
+                <span class="cat-foot">
+                  <span class="cat-more">查看全部</span>
                   <span class="arrow" aria-hidden="true">↗</span>
                 </span>
               </a>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { counts, entries } from '../data/library';
+import { counts, entries, latestDate } from '../data/library';
 ---
 
 <BaseLayout
@@ -33,7 +33,34 @@ import { counts, entries } from '../data/library';
       </div>
     </dl>
 
-    <div class="prose">
+    <div class="about-layout">
+      <aside class="about-rail" aria-label="概览">
+        <div class="rail-block">
+          <h4>索引</h4>
+          <ul class="rail-list">
+            <li><span>技术笔记</span><span>{counts.tech}</span></li>
+            <li><span>管理知识</span><span>{counts.management}</span></li>
+            <li><span>管理心得</span><span>{counts.reflection}</span></li>
+          </ul>
+        </div>
+
+        <div class="rail-block">
+          <h4>关注</h4>
+          <p>具身智能 · 智能驾驶<br />复杂系统的交付节奏</p>
+        </div>
+
+        <div class="rail-block">
+          <h4>最近更新</h4>
+          <p>{latestDate}</p>
+        </div>
+
+        <div class="rail-block">
+          <h4>联系</h4>
+          <p><a href="mailto:lichwork0@gmail.com">lichwork0@gmail.com</a></p>
+        </div>
+      </aside>
+
+      <div class="prose">
       <p>
         我的工作是把技术上的不确定性，变成可以被讨论、被验证、被推进的东西。这件事听起来抽象，落到日常就是：需求边界不清时把边界问出来，方案没收敛时把选项摆到桌面上，跨团队卡住时找到真正能拍板的人。
       </p>
@@ -71,6 +98,7 @@ import { counts, entries } from '../data/library';
       <p>
         邮件最好：<a href="mailto:lichwork0@gmail.com">lichwork0@gmail.com</a>。文档权限、内容讨论、项目上的具体问题，都欢迎。
       </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

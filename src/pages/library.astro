@@ -12,22 +12,8 @@ import { categories, counts, entries, groups, latestDate } from '../data/library
     <p class="eyebrow">Index / 知识索引</p>
     <h1>知识索引</h1>
     <p class="page-lede">
-      技术笔记、管理知识与管理心得的目录。正文都放在飞书云文档里，这里只保留标题、一句话说明和更新时间——文档更新了，索引不用跟着改版。
+      技术笔记、管理知识与管理心得，共 {entries.length} 篇。正文都在飞书云文档里，这里保留标题、一句话说明和更新时间——文档更新了，索引不用跟着改版。
     </p>
-
-    <div class="filter" role="group" aria-label="按分类筛选">
-      <button type="button" data-filter="all" aria-pressed="true">
-        全部<span>{entries.length}</span>
-      </button>
-      {
-        categories.map((category) => (
-          <button type="button" data-filter={category.id} aria-pressed="false">
-            {category.name}
-            <span>{counts[category.id]}</span>
-          </button>
-        ))
-      }
-    </div>
   </header>
 
   <section class="section section--flush">
@@ -50,25 +36,50 @@ import { categories, counts, entries, groups, latestDate } from '../data/library
       </div>
     </dl>
 
-    <div id="library">
-      {
-        groups.map((group, groupIndex) => (
-          <section class="cat-section" id={group.id} data-section={group.id}>
-            <h2 class="cat-head">
-              <span class="cat-num">{String(groupIndex + 1).padStart(2, '0')}</span>
-              <span>{group.name}</span>
-              <span class="cat-head-count">{counts[group.id]} 篇</span>
-            </h2>
-            <p class="cat-desc">{group.desc}</p>
+    <div class="library">
+      <aside class="library-nav" aria-label="分类导航">
+        <p class="library-nav-label">分类</p>
 
-            <div class="rows">
-              {group.items.map((entry, index) => (
-                <LinkRow entry={entry} delay={index * 40} />
-              ))}
-            </div>
-          </section>
-        ))
-      }
+        <div class="library-filters" role="group" aria-label="按分类筛选">
+          <button type="button" data-filter="all" aria-pressed="true">
+            全部<span>{entries.length}</span>
+          </button>
+          {
+            categories.map((category) => (
+              <button type="button" data-filter={category.id} aria-pressed="false">
+                {category.name}
+                <span>{counts[category.id]}</span>
+              </button>
+            ))
+          }
+        </div>
+
+        <p class="library-nav-meta">
+          <span>最近更新</span>
+          <strong>{latestDate}</strong>
+        </p>
+      </aside>
+
+      <div class="library-main" id="library">
+        {
+          groups.map((group, groupIndex) => (
+            <section class="cat-section" id={group.id} data-section={group.id}>
+              <h2 class="cat-head">
+                <span class="cat-num">{String(groupIndex + 1).padStart(2, '0')}</span>
+                <span>{group.name}</span>
+                <span class="cat-head-count">{counts[group.id]} 篇</span>
+              </h2>
+              <p class="cat-desc">{group.desc}</p>
+
+              <div class="rows">
+                {group.items.map((entry, index) => (
+                  <LinkRow entry={entry} delay={index * 40} />
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
     </div>
 
     <p class="list-note">
