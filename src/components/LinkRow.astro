@@ -1,0 +1,34 @@
+---
+import type { Entry } from '../data/library';
+
+interface Props {
+  entry: Entry;
+  delay?: number;
+}
+
+const { entry, delay = 0 } = Astro.props;
+---
+
+<a
+  class="row"
+  href={entry.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-cat={entry.category}
+  data-reveal
+  style={`--d:${delay}ms`}
+>
+  <time>{entry.date}</time>
+
+  <span class="row-main">
+    <span class="row-title">{entry.title}</span>
+    <span class="row-desc">{entry.summary}</span>
+  </span>
+
+  <span class="row-side">
+    {entry.tags.slice(0, 2).map((tag) => <span class="tag">{tag}</span>)}
+    {entry.access === 'request' && <span class="tag tag--lock">需申请</span>}
+  </span>
+
+  <span class="arrow" aria-hidden="true">↗</span>
+</a>

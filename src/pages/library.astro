@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LinkRow from '../components/LinkRow.astro';
+import { categories, counts, entries, groups, latestDate } from '../data/library';
+---
+
+<BaseLayout
+  title="知识索引"
+  description="李辰麾的知识索引：具身智能与智能驾驶的技术笔记、管理知识与管理心得，正文托管在飞书云文档。"
+>
+  <header class="page-head">
+    <p class="eyebrow">Index / 知识索引</p>
+    <h1>知识索引</h1>
+    <p class="page-lede">
+      技术笔记、管理知识与管理心得的目录。正文都放在飞书云文档里，这里只保留标题、一句话说明和更新时间——文档更新了，索引不用跟着改版。
+    </p>
+
+    <div class="filter" role="group" aria-label="按分类筛选">
+      <button type="button" data-filter="all" aria-pressed="true">
+        全部<span>{entries.length}</span>
+      </button>
+      {
+        categories.map((category) => (
+          <button type="button" data-filter={category.id} aria-pressed="false">
+            {category.name}
+            <span>{counts[category.id]}</span>
+          </button>
+        ))
+      }
+    </div>
+  </header>
+
+  <section class="section section--flush">
+    <dl class="spec">
+      <div>
+        <dt>条目</dt>
+        <dd>{entries.length} 篇</dd>
+      </div>
+      <div>
+        <dt>分类</dt>
+        <dd>技术 · 管理 · 心得</dd>
+      </div>
+      <div>
+        <dt>最近更新</dt>
+        <dd>{latestDate}</dd>
+      </div>
+      <div>
+        <dt>正文位置</dt>
+        <dd>飞书云文档</dd>
+      </div>
+    </dl>
+
+    <div id="library">
+      {
+        groups.map((group, groupIndex) => (
+          <section class="cat-section" id={group.id} data-section={group.id}>
+            <h2 class="cat-head">
+              <span class="cat-num">{String(groupIndex + 1).padStart(2, '0')}</span>
+              <span>{group.name}</span>
+              <span class="cat-head-count">{counts[group.id]} 篇</span>
+            </h2>
+            <p class="cat-desc">{group.desc}</p>
+
+            <div class="rows">
+              {group.items.map((entry, index) => (
+                <LinkRow entry={entry} delay={index * 40} />
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <p class="list-note">
+      标注「需申请」的文档需要单独开通权限，来信说明要看哪一篇即可。
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const buttons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-filter]'),
+  );
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('#library .row'));
+  const sections = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-section]'),
+  );
+
+  const apply = (category: string) => {
+    for (const button of buttons) {
+      button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+    }
+
+    for (const row of rows) {
+      row.hidden = category !== 'all' && row.dataset.cat !== category;
+    }
+
+    for (const section of sections) {
+      const hasVisibleRow = Array.from(section.querySelectorAll<HTMLElement>('.row')).some(
+        (row) => !row.hidden,
+      );
+      section.hidden = !hasVisibleRow;
+    }
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => apply(button.dataset.filter ?? 'all'));
+  }
+</script>

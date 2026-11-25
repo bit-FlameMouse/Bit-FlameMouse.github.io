@@ -1,0 +1,38 @@
+---
+const { pathname } = Astro.url;
+
+const items = [
+  { href: '/library/', label: '知识索引' },
+  { href: '/about/', label: '关于' },
+];
+
+const isActive = (href: string) => pathname.startsWith(href);
+---
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="李辰麾，回到首页">
+      <span class="brand-mark" aria-hidden="true">B</span>
+      <span class="brand-name">李辰麾</span>
+      <span class="brand-handle">TPM / bit-flamemouse</span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      {
+        items.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        class="nav-ext"
+        href="https://github.com/bit-FlameMouse"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub ↗
+      </a>
+    </nav>
+  </div>
+</header>

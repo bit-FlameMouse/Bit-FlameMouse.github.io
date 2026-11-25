@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = '李辰麾的知识索引：具身智能与智能驾驶方向的技术笔记、管理知识与管理心得，正文托管在飞书云文档。',
+} = Astro.props;
+
+const fullTitle =
+  title === '首页' ? '李辰麾 · 技术项目管理 / 知识索引' : `${title} · 李辰麾`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="李辰麾" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="twitter:card" content="summary" />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <div class="frame">
+      <Header />
+      <main id="main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <script>
+      const header = document.getElementById('site-header');
+      const syncHeader = () => {
+        header?.classList.toggle('is-stuck', window.scrollY > 8);
+      };
+      syncHeader();
+      window.addEventListener('scroll', syncHeader, { passive: true });
+
+      const targets = document.querySelectorAll('[data-reveal]');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('is-in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -6% 0px', threshold: 0.04 },
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
